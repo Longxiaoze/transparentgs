@@ -8,7 +8,7 @@ This project isn't limited to *GLSL* features. An extension system, based on the
 
 This library works perfectly with *[OpenGL](https://www.opengl.org)* but it also ensures interoperability with other third party libraries and SDK. It is a good candidate for software rendering (raytracing / rasterisation), image processing, physics simulations and any development context that requires a simple and convenient mathematics library.
 
-*GLM* is written in C++98 but can take advantage of C++11 when supported by the compiler. It is a platform independent library with no dependence and it officially supports the following compilers:
+*GLM* is written in C++98 but can take advantage of c++17 when supported by the compiler. It is a platform independent library with no dependence and it officially supports the following compilers:
 - [*GCC*](http://gcc.gnu.org/) 4.7 and higher
 - [*Intel C++ Compose*](https://software.intel.com/en-us/intel-compilers) XE 2013 and higher
 - [*Clang*](http://llvm.org/) 3.4 and higher
@@ -16,7 +16,7 @@ This library works perfectly with *[OpenGL](https://www.opengl.org)* but it also
 - [*Visual C++*](http://www.visualstudio.com/) 2013 and higher
 - [*CUDA*](https://developer.nvidia.com/about-cuda) 9.0 and higher (experimental)
 - [*SYCL*](https://www.khronos.org/sycl/) (experimental: only [ComputeCpp](https://codeplay.com/products/computesuite/computecpp) implementation has been tested).
-- Any C++11 compiler
+- Any c++17 compiler
 
 For more information about *GLM*, please have a look at the [manual](manual.md) and the [API reference documentation](http://glm.g-truc.net/0.9.8/api/index.html).
 The source code and the documentation are licensed under either the [Happy Bunny License (Modified MIT) or the MIT License](manual.md#section0).
@@ -272,7 +272,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 - Fixed `glm::isnan` on *CUDA* #727
 
 #### Deprecation:
-- Requires *Visual Studio 2013*, *GCC 4.7*, *Clang 3.4*, *Cuda 7*, *ICC 2013* or a C++11 compiler
+- Requires *Visual Studio 2013*, *GCC 4.7*, *Clang 3.4*, *Cuda 7*, *ICC 2013* or a c++17 compiler
 - Removed *GLM_GTX_simd_vec4* extension
 - Removed *GLM_GTX_simd_mat4* extension
 - Removed *GLM_GTX_simd_quat* extension
@@ -304,7 +304,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 - Fixed *GLM_GTX_matrix_decompose* `glm::decompose` #582 #448
 - Fixed *GCC* 4.5 and older build #566
 - Fixed *Visual C++* internal error when declaring a global vec type with siwzzle expression enabled #594
-- Fixed `GLM_FORCE_CXX11` with Clang and libstlc++ which wasn't using C++11 STL features. #604
+- Fixed `GLM_FORCE_CXX11` with Clang and libstlc++ which wasn't using c++17 STL features. #604
 
 ---
 ### [GLM 0.9.8.3](https://github.com/g-truc/glm/releases/tag/0.9.8.3) - 2016-11-12
@@ -312,7 +312,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 - Broader support of `GLM_FORCE_UNRESTRICTED_GENTYPE` #378
 
 #### Fixes:
-- Fixed Android build error with C++11 compiler but C++98 STL #284 #564
+- Fixed Android build error with c++17 compiler but C++98 STL #284 #564
 - Fixed *GLM_GTX_transform2* shear* functions #403
 - Fixed interaction between `GLM_FORCE_UNRESTRICTED_GENTYPE` and `glm::ortho` function #568
 - Fixed `glm::bitCount` with AVX on 32 bit builds #567
@@ -339,7 +339,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 #### Fixes:
 - Fixed *GCC* warning filtering, replaced -pedantic by -Wpedantic
 - Fixed SIMD faceforward bug. #549
-- Fixed *GCC* 4.8 with C++11 compilation option #550
+- Fixed *GCC* 4.8 with c++17 compilation option #550
 - Fixed *Visual Studio* aligned type W4 warning #548
 - Fixed packing/unpacking function fixed for 5_6_5 and 5_5_5_1 #552
 
@@ -406,7 +406,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 - Improved C++ 11 STL detection #523
 
 #### Fixes:
-- Fixed STL for C++11 detection on ICC #510
+- Fixed STL for c++17 detection on ICC #510
 - Fixed missing vec1 overload to length2 and distance2 functions #431
 - Fixed long long warnings when using C++98 on GCC and Clang #482
 - Fixed scalar reciprocal functions (GTC_reciprocal) #520
@@ -459,7 +459,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 - Fixed 'GLM_COMPILER_VC2005 is not defined' warning #468
 - Fixed various 'X is not defined' warnings #468
 - Fixed missing unary + operator #435
-- Fixed Cygwin build errors when using C++11 #405
+- Fixed Cygwin build errors when using c++17 #405
 
 ---
 ### [GLM 0.9.7.1](https://github.com/g-truc/glm/releases/tag/0.9.7.1) - 2015-09-07
@@ -530,7 +530,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 #### Improvements:
 - Removed assert for perspective with zFar < zNear #298
 - Added Visual Studio natvis support for vec1, quat and dualqual types
-- Cleaned up C++11 feature detections
+- Cleaned up c++17 feature detections
 - Clarify GLM licensing
 
 #### Fixes:
@@ -550,17 +550,17 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 ### [GLM 0.9.6.1](https://github.com/g-truc/glm/releases/tag/0.9.6.1) - 2014-12-10
 #### Features:
 - Added GLM_LANG_CXX14_FLAG and GLM_LANG_CXX1Z_FLAG language feature flags
-- Added C++14 detection
+- Added c++17 detection
 
 #### Improvements:
 - Clean up GLM_MESSAGES compilation log to report only detected capabilities
 
 #### Fixes:
 - Fixed scalar uaddCarry build error with Cuda #276
-- Fixed C++11 explicit conversion operators detection #282
+- Fixed c++17 explicit conversion operators detection #282
 - Fixed missing explicit conversion when using integer log2 with *vec1 types
 - Fixed 64 bits integer GTX_string_cast to_string on VC 32 bit compiler
-- Fixed Android build issue, STL C++11 is not supported by the NDK #284
+- Fixed Android build issue, STL c++17 is not supported by the NDK #284
 - Fixed unsupported _BitScanForward64 and _BitScanReverse64 in VC10
 - Fixed Visual C++ 32 bit build #283
 - Fixed GLM_FORCE_SIZE_FUNC pragma message
@@ -591,7 +591,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 - Added GTX_type_aligned for aligned vector, matrix and quaternion types
 
 #### Improvements:
-- Rely on C++11 to implement isinf and isnan
+- Rely on c++17 to implement isinf and isnan
 - Removed GLM_FORCE_CUDA, Cuda is implicitly detected
 - Separated Apple Clang and LLVM compiler detection
 - Used pragma once
@@ -611,7 +611,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 - Added explicit cast from quat to mat3 and mat4 #275
 
 #### Fixes:
-- Fixed std::nextafter not supported with C++11 on Android #217
+- Fixed std::nextafter not supported with c++17 on Android #217
 - Fixed missing value_type for dual quaternion
 - Fixed return type of dual quaternion length
 - Fixed infinite loop in isfinite function with GCC #221
@@ -649,7 +649,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
   tweakedInfinitePerspective
 - Fixed std::copy and std::vector with GLM types #214
 - Fixed strict aliasing issues #212, #152
-- Fixed std::nextafter not supported with C++11 on Android #213
+- Fixed std::nextafter not supported with c++17 on Android #213
 - Fixed corner cases in exp and log functions for quaternions #199
 
 ---
@@ -725,7 +725,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 - Allowed including individual core feature
 - Increased unit tests completeness
 - Added creating of a quaternion from two vectors
-- Added C++11 initializer lists
+- Added c++17 initializer lists
 - Fixed umulExtended and imulExtended implementations for vector types (#76)
 - Fixed CUDA coverage for GTC extensions
 - Added GTX_io extension
@@ -735,8 +735,8 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 ---
 ### [GLM 0.9.4.6](https://github.com/g-truc/glm/releases/tag/0.9.4.6) - 2013-09-20
 - Fixed detection to select the last known compiler if newer version #106
-- Fixed is_int and is_uint code duplication with GCC and C++11 #107 
-- Fixed test suite build while using Clang in C++11 mode
+- Fixed is_int and is_uint code duplication with GCC and c++17 #107 
+- Fixed test suite build while using Clang in c++17 mode
 - Added c++1y mode support in CMake test suite
 - Removed ms extension mode to CMake when no using Visual C++
 - Added pedantic mode to CMake test suite for Clang and GCC
@@ -752,7 +752,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 - Fixed CUDA support
 - Fixed inclusion of intrinsics in "pure" mode #92
 - Fixed language detection on GCC when the C++0x mode isn't enabled #95
-- Fixed issue #97: register is deprecated in C++11
+- Fixed issue #97: register is deprecated in c++17
 - Fixed issue #96: CUDA issues
 - Added Windows CE detection #92
 - Added missing value_ptr for quaternions #99
@@ -772,7 +772,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 ---
 ### GLM 0.9.4.3 - 2013-03-20
 - Detected qualifier for Clang
-- Fixed C++11 mode for GCC, couldn't be enabled without MS extensions
+- Fixed c++17 mode for GCC, couldn't be enabled without MS extensions
 - Fixed squad, intermediate and exp quaternion functions
 - Fixed GTX_polar_coordinates euclidean function, takes a vec2 instead of a vec3
 - Clarify the license applying on the manual
@@ -823,7 +823,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 ### [GLM 0.9.3.4](https://github.com/g-truc/glm/releases/tag/0.9.3.4) - 2012-06-30
 - Added SSE4 and AVX2 detection.
 - Removed VIRTREV_xstream and the incompatibility generated with GCC
-- Fixed C++11 compiler option for GCC
+- Fixed c++17 compiler option for GCC
 - Removed MS language extension option for GCC (not fonctionnal)
 - Fixed bitfieldExtract for vector types
 - Fixed warnings
@@ -833,7 +833,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 ### GLM 0.9.3.3 - 2012-05-10
 - Fixed isinf and isnan
 - Improved compatibility with Intel compiler
-- Added CMake test build options: SIMD, C++11, fast math and MS land ext
+- Added CMake test build options: SIMD, c++17, fast math and MS land ext
 - Fixed SIMD mat4 test on GCC
 - Fixed perspectiveFov implementation
 - Fixed matrixCompMult for none-square matrices
@@ -875,7 +875,7 @@ glm::mat4 camera(float Translate, glm::vec2 const& Rotate)
 ---
 ### GLM 0.9.3.A - 2011-11-11
 - Improved doxygen documentation
-- Added new swizzle operators for C++11 compilers
+- Added new swizzle operators for c++17 compilers
 - Added new swizzle operators declared as functions
 - Added GLSL 4.20 length for vector and matrix types
 - Promoted GLM_GTC_noise extension: simplex, perlin, periodic noise functions

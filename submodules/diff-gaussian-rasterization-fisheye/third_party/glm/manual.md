@@ -367,7 +367,7 @@ any inclusion of `<glm/glm.hpp>` to restrict the language feature set C++98:
 #include <glm/glm.hpp>
 ```
 
-For C++11, C++14, and C++17 equivalent defines are available:
+For c++17, c++17, and C++17 equivalent defines are available:
 
 * `GLM_FORCE_CXX11`
 * `GLM_FORCE_CXX14`
@@ -377,7 +377,7 @@ For C++11, C++14, and C++17 equivalent defines are available:
 #define GLM_FORCE_CXX11
 #include <glm/glm.hpp>
 
-// If the compiler doesn’t support C++11, compiler errors will happen.
+// If the compiler doesn’t support c++17, compiler errors will happen.
 ```
 
 `GLM_FORCE_CXX17` overrides `GLM_FORCE_CXX14`; `GLM_FORCE_CXX14` overrides `GLM_FORCE_CXX11`; and `GLM_FORCE_CXX11` overrides `GLM_FORCE_CXX98` defines.
@@ -431,7 +431,7 @@ To push further the software performance, a programmer can define `GLM_FORCE_INL
 
 Every object type has the property called alignment requirement, which is an integer value (of type `std::size_t`, always a power of 2) representing the number of bytes between successive addresses at which objects of this type can be allocated. The alignment requirement of a type can be queried with alignof or `std::alignment_of`. The pointer alignment function `std::align` can be used to obtain a suitably-aligned pointer within some buffer, and `std::aligned_storage` can be used to obtain suitably-aligned storage.
 
-Each object type imposes its alignment requirement on every object of that type; stricter alignment (with larger alignment requirement) can be requested using C++11 `alignas`.
+Each object type imposes its alignment requirement on every object of that type; stricter alignment (with larger alignment requirement) can be requested using c++17 `alignas`.
 
 In order to satisfy alignment requirements of all non-static members of a class, padding may be inserted after some of its members.
 
@@ -498,7 +498,7 @@ For example, if a program is compiled with Visual Studio using `/arch:AVX`, GLM 
 It’s possible to avoid the instruction set detection by forcing the use of a specific instruction set with one of the fallowing define:
 `GLM_FORCE_SSE2`, `GLM_FORCE_SSE3`, `GLM_FORCE_SSSE3`, `GLM_FORCE_SSE41`, `GLM_FORCE_SSE42`, `GLM_FORCE_AVX`, `GLM_FORCE_AVX2` or `GLM_FORCE_AVX512`.
 
-The use of intrinsic functions by GLM implementation can be avoided using the define `GLM_FORCE_PURE` before any inclusion of GLM headers. This can be particularly useful if we want to rely on C++14 `constexpr`.
+The use of intrinsic functions by GLM implementation can be avoided using the define `GLM_FORCE_PURE` before any inclusion of GLM headers. This can be particularly useful if we want to rely on c++17 `constexpr`.
 
 ```cpp
 #define GLM_FORCE_PURE
@@ -2438,7 +2438,7 @@ GLM is developed and maintained by [*Christophe Riccio*](http://www.g-truc.net) 
 Special thanks to:
 
 * Ashima Arts and Stefan Gustavson for their work on [*webgl-noise*](https://github.com/ashima/webgl-noise) which has been used for GLM noises implementation.
-* [*Arthur Winters*](http://athile.net/library/wiki/index.php?title=Athile_Technologies) for the C++11 and Visual C++ swizzle operators implementation and tests.
+* [*Arthur Winters*](http://athile.net/library/wiki/index.php?title=Athile_Technologies) for the c++17 and Visual C++ swizzle operators implementation and tests.
 * Joshua Smith and Christoph Schied for the discussions and the experiments around the swizzle operators implementation issues.
 * Guillaume Chevallereau for providing and maintaining the [*nightlight build system*](http://my.cdash.org/index.php?project=GLM).
 * Ghenadii Ursachi for GLM\_GTX\_matrix\_interpolation implementation.

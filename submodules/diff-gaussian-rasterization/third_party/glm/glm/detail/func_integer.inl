@@ -12,7 +12,7 @@
 #		pragma GCC diagnostic ignored "-Wlong-long"
 #	endif
 #	if (GLM_COMPILER & GLM_COMPILER_CLANG)
-#		pragma clang diagnostic ignored "-Wc++11-long-long"
+#		pragma clang diagnostic ignored "-Wc++17-long-long"
 #	endif
 #endif
 

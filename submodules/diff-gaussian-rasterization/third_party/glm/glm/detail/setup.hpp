@@ -139,7 +139,7 @@
 // http://gcc.gnu.org/projects/cxx0x.html
 // http://msdn.microsoft.com/en-us/library/vstudio/hh567368(v=vs.120).aspx
 
-// Android has multiple STLs but C++11 STL detection doesn't always work #284 #564
+// Android has multiple STLs but c++17 STL detection doesn't always work #284 #564
 #if GLM_PLATFORM == GLM_PLATFORM_ANDROID && !defined(GLM_LANG_STL11_FORCED)
 #	define GLM_HAS_CXX11_STL 0
 #elif (GLM_COMPILER & GLM_COMPILER_CUDA_RTC) == GLM_COMPILER_CUDA_RTC
@@ -712,7 +712,7 @@ namespace detail
 		__extension__ typedef unsigned long long	uint64;
 		__extension__ typedef signed long long		int64;
 #	elif (GLM_COMPILER & GLM_COMPILER_CLANG)
-#		pragma clang diagnostic ignored "-Wc++11-long-long"
+#		pragma clang diagnostic ignored "-Wc++17-long-long"
 		typedef unsigned long long					uint64;
 		typedef signed long long					int64;
 #	else//unknown compiler
@@ -1156,13 +1156,13 @@ namespace detail
 #		pragma message("GLM: GLM_FORCE_ALIGNED_GENTYPES is defined, allowing aligned types. This prevents the use of C++ constexpr.")
 #	elif defined(GLM_FORCE_ALIGNED_GENTYPES) && (GLM_CONFIG_ALIGNED_GENTYPES == GLM_DISABLE)
 #		undef GLM_FORCE_ALIGNED_GENTYPES
-#		pragma message("GLM: GLM_FORCE_ALIGNED_GENTYPES is defined but is disabled. It requires C++11 and language extensions.")
+#		pragma message("GLM: GLM_FORCE_ALIGNED_GENTYPES is defined but is disabled. It requires c++17 and language extensions.")
 #	endif
 
 #	if defined(GLM_FORCE_DEFAULT_ALIGNED_GENTYPES)
 #		if GLM_CONFIG_ALIGNED_GENTYPES == GLM_DISABLE
 #			undef GLM_FORCE_DEFAULT_ALIGNED_GENTYPES
-#			pragma message("GLM: GLM_FORCE_DEFAULT_ALIGNED_GENTYPES is defined but is disabled. It requires C++11 and language extensions.")
+#			pragma message("GLM: GLM_FORCE_DEFAULT_ALIGNED_GENTYPES is defined but is disabled. It requires c++17 and language extensions.")
 #		elif GLM_CONFIG_ALIGNED_GENTYPES == GLM_ENABLE
 #			pragma message("GLM: GLM_FORCE_DEFAULT_ALIGNED_GENTYPES is defined. All gentypes (e.g. vec3) will be aligned and padded by default.")
 #		endif

@@ -28,28 +28,28 @@ jobs:
         - MATRIX_EVAL=""
         - CMAKE_BUILD_ENV="-DCMAKE_BUILD_TYPE=Release -DGLM_TEST_ENABLE=ON -DGLM_TEST_ENABLE_CXX_98=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON"
 
-    - name: "XCode 7.3 C++11 pure release"
+    - name: "XCode 7.3 c++17 pure release"
       os: osx
       osx_image: xcode7.3
       env:
         - MATRIX_EVAL=""
         - CMAKE_BUILD_ENV="-DCMAKE_BUILD_TYPE=Release -DGLM_TEST_ENABLE=ON -DGLM_TEST_ENABLE_CXX_11=ON -DGLM_TEST_FORCE_PURE=ON"
 
-    - name: "XCode 7.3 C++11 sse2 release"
+    - name: "XCode 7.3 c++17 sse2 release"
       os: osx
       osx_image: xcode7.3
       env:
         - MATRIX_EVAL=""
         - CMAKE_BUILD_ENV="-DCMAKE_BUILD_TYPE=Release -DGLM_TEST_ENABLE=ON -DGLM_TEST_ENABLE_CXX_11=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON -DGLM_TEST_ENABLE_SIMD_SSE3=ON"
 
-    - name: "XCode 10.3 C++11 sse2 release"
+    - name: "XCode 10.3 c++17 sse2 release"
       os: osx
       osx_image: xcode10.3
       env:
         - MATRIX_EVAL=""
         - CMAKE_BUILD_ENV="-DCMAKE_BUILD_TYPE=Release -DGLM_TEST_ENABLE=ON -DGLM_TEST_ENABLE_CXX_11=ON -DGLM_TEST_ENABLE_LANG_EXTENSIONS=ON -DGLM_TEST_ENABLE_SIMD_SSE3=ON"
 
-    - name: "XCode 12.2 C++11 sse2 release"
+    - name: "XCode 12.2 c++17 sse2 release"
       os: osx
       osx_image: xcode12.2
       env:
@@ -58,7 +58,7 @@ jobs:
         - CTEST_ENV="--parallel 4 --output-on-failure"
         - CMAKE_ENV="--parallel"
 
-    - name: "XCode 12.2 C++11 sse2 debug"
+    - name: "XCode 12.2 c++17 sse2 debug"
       os: osx
       osx_image: xcode12.2
       env:
@@ -67,7 +67,7 @@ jobs:
         - CTEST_ENV="--parallel 4 --output-on-failure"
         - CMAKE_ENV="--parallel"
 
-    - name: "XCode 12.2 C++11 avx debug"
+    - name: "XCode 12.2 c++17 avx debug"
       os: osx
       osx_image: xcode12.2
       env:
@@ -76,7 +76,7 @@ jobs:
         - CTEST_ENV="--parallel 4 --output-on-failure"
         - CMAKE_ENV="--parallel"
 
-    - name: "XCode 12.2 C++14 avx debug"
+    - name: "XCode 12.2 c++17 avx debug"
       os: osx
       osx_image: xcode12.2
       env:
@@ -85,7 +85,7 @@ jobs:
         - CTEST_ENV="--parallel 4 --output-on-failure"
         - CMAKE_ENV="--parallel"
 
-    - name: "XCode 12.2 C++14 pure debug"
+    - name: "XCode 12.2 c++17 pure debug"
       os: osx
       osx_image: xcode12.2
       env:
@@ -175,7 +175,7 @@ jobs:
         - CTEST_ENV="--parallel 4 --output-on-failure"
         - CMAKE_ENV="--parallel"
 
-    - name: "GCC 4.9 C++11 ms debug"
+    - name: "GCC 4.9 c++17 ms debug"
       os: linux
       dist: Xenial
       addons:
@@ -190,7 +190,7 @@ jobs:
         - CTEST_ENV="--parallel 4 --output-on-failure"
         - CMAKE_ENV="--parallel"
 
-    - name: "GCC 4.9 C++11 pure debug"
+    - name: "GCC 4.9 c++17 pure debug"
       os: linux
       dist: Xenial
       addons:
@@ -205,7 +205,7 @@ jobs:
         - CTEST_ENV="--parallel 4 --output-on-failure"
         - CMAKE_ENV="--parallel"
 
-    - name: "GCC 6 C++14 pure debug"
+    - name: "GCC 6 c++17 pure debug"
       os: linux
       dist: bionic
       addons:
@@ -220,7 +220,7 @@ jobs:
         - CTEST_ENV="--parallel 4 --output-on-failure"
         - CMAKE_ENV="--parallel"
 
-    - name: "GCC 6 C++14 ms debug"
+    - name: "GCC 6 c++17 ms debug"
       os: linux
       dist: bionic
       addons:
@@ -295,7 +295,7 @@ jobs:
         - CTEST_ENV="--parallel 4 --output-on-failure"
         - CMAKE_ENV="--parallel"
 
-    - name: "Clang C++14 pure release"
+    - name: "Clang c++17 pure release"
       os: linux
       dist: Xenial
       env:
@@ -304,7 +304,7 @@ jobs:
         - CTEST_ENV="--parallel 4 --output-on-failure"
         - CMAKE_ENV="--parallel"
 
-    - name: "Clang C++14 pure debug"
+    - name: "Clang c++17 pure debug"
       os: linux
       dist: Xenial
       env:
@@ -313,7 +313,7 @@ jobs:
         - CTEST_ENV="--parallel 4 --output-on-failure"
         - CMAKE_ENV="--parallel"
 
-    - name: "Clang C++14 sse2 debug"
+    - name: "Clang c++17 sse2 debug"
       os: linux
       dist: Xenial
       env:
@@ -322,7 +322,7 @@ jobs:
         - CTEST_ENV="--parallel 4 --output-on-failure"
         - CMAKE_ENV="--parallel"
 
-    - name: "Clang C++14 sse2 debug"
+    - name: "Clang c++17 sse2 debug"
       os: linux
       dist: focal
       env:
