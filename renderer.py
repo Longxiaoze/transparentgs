@@ -9,6 +9,7 @@ os.environ["OPENCV_IO_ENABLE_OPENEXR"] = "1"
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 import argparse
+from typing import Callable, Optional, Union
 import numpy as np
 import trimesh
 import torch.nn.functional as F
@@ -28,6 +29,94 @@ from mesh_utils import mesh2gs, create_dodecahedron
 
 import math
 import cv2
+
+def render_gaussian_to_file(
+    gaussian: GaussianModel,
+    pose: Union[np.ndarray, torch.Tensor, list],
+    output_path: str,
+    *,
+    renderer: Union[str, Callable] = "simple_render",
+    height: int = 512,
+    width: int = 512,
+    fovx: float = 60.0,
+    fovy: float = 60.0,
+    camera_center: Optional[Union[np.ndarray, torch.Tensor, list]] = None,
+    bg_color=(0.0, 0.0, 0.0),
+    scale_modifier: float = 1.0,
+    proxy: Optional[GaussianModel] = None,
+    pc_label: int = 0,
+    proxy_label: int = 1,
+    to_uint8: bool = True,
+) -> np.ndarray:
+    """Render a gaussian scene from a pose and save it to disk."""
+    renderer_map = {
+        "simple_render": simple_render,
+        "simple_render_panorama": simple_render_panorama,
+        "simple_render_fisheye": simple_render_fisheye,
+    }
+
+    if isinstance(renderer, str):
+        if renderer not in renderer_map:
+            raise ValueError(f"Unknown renderer '{renderer}'. "
+                             f"Choose from {list(renderer_map)} or pass a callable.")
+        render_fn = renderer_map[renderer]
+    elif callable(renderer):
+        render_fn = renderer
+    else:
+        raise TypeError("renderer must be a string key or a callable.")
+
+    if isinstance(pose, torch.Tensor):
+        pose_np = pose.detach().cpu().numpy().astype(np.float32, copy=False)
+    else:
+        pose_np = np.asarray(pose, dtype=np.float32)
+
+    if pose_np.shape != (4, 4):
+        raise ValueError("pose must be a 4x4 matrix.")
+
+    if camera_center is None:
+        camera_center_np = pose_np[:3, 3]
+    else:
+        if isinstance(camera_center, torch.Tensor):
+            camera_center_np = camera_center.detach().cpu().numpy().astype(np.float32, copy=False)
+        else:
+            camera_center_np = np.asarray(camera_center, dtype=np.float32)
+        camera_center_np = camera_center_np.reshape(-1)
+        if camera_center_np.shape != (3,):
+            raise ValueError("camera_center must be a 3-element vector.")
+
+    height = int(height)
+    width = int(width)
+
+    with torch.no_grad():
+        image = render_fn(
+            gaussian,
+            camera_center_np,
+            pose_np,
+            fovx,
+            fovy,
+            height,
+            width,
+            bg_color=bg_color,
+            scale_modifier=scale_modifier,
+            proxy=proxy,
+            pc_label=pc_label,
+            proxy_label=proxy_label,
+        )
+        image = image.detach().cpu().numpy()
+
+    rgb = np.clip(image, 0.0, 1.0)
+    bgr = rgb[..., ::-1]
+    if to_uint8:
+        bgr_to_save = (bgr * 255.0 + 0.5).astype(np.uint8)
+    else:
+        bgr_to_save = bgr.astype(np.float32)
+
+    dirpath = os.path.dirname(output_path)
+    if dirpath:
+        os.makedirs(dirpath, exist_ok=True)
+
+    cv2.imwrite(output_path, bgr_to_save)
+    return rgb
 
 def generate_envmap_directions(H, W, device='cpu'):
     v, u = torch.meshgrid(
