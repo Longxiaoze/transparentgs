@@ -168,4 +168,4 @@ if __name__ == "__main__":
 # example usage:
 # python render_gaussian_image.py --gaussian model.ply --pose identity_4x4.npy --output rendered_image.png --renderer pinhole --height 512 --width 512 --fovx 60 --fovy 60 --bg-color 0,0,0
 # python render_gaussian_image.py --gaussian model.ply --pose identity_4x4.npy --output rendered_image.png --renderer fisheye --height 512 --width 512 --fovx 60 --fovy 60 --bg-color 0,0,0
-# python render_gaussian_image.py --gaussian model.ply --pose identity_4x4.npy --output rendered_image.png --renderer panorama --height 1024 --width 512--bg-color 0,0,0
+# python render_gaussian_image.py --gaussian model.ply --pose identity_4x4.npy --output rendered_image.png --renderer panorama --height 512 --width 1024--bg-color 0,0,0
